@@ -66,7 +66,7 @@ int main(int argc, char *argv[])
 
       SECTION("/= operator")
       {
-        vec1 /=s;
+        vec1 /=s; //Division durch null!!
         REQUIRE( vec1.x_ == Approx(1.5));
         REQUIRE( vec1.y_ == Approx(2.5));
       }
