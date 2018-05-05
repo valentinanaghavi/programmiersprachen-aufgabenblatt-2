@@ -7,8 +7,8 @@
 //default_constructor
 Vec2 :: Vec2 ()
 {
-x_ = 0;
-y_ = 0;
+x_ = 0.0f;
+y_ = 0.0f;
 }
 
 //user_constructor
@@ -46,6 +46,9 @@ Vec2& Vec2 :: operator /=( float s )
   if(s == 0)
   {
   std::cout <<"Bei Division darf man nicht durch 0 teilen!"<<std::endl;
+  x_ = 0.0f;
+  y_ = 0.0f;
+  return *this;
   }
   else{
   x_ /= s;
@@ -73,12 +76,15 @@ Vec2 operator *( Vec2 const& v , float s )
 
 Vec2 operator /( Vec2 const& v , float s )
 {
-   if(s == 0)
+  if(s == 0)
   {
-  std::cout <<"Bei Division darf man nicht durch 0 teilen!"<<std::endl;
+    std::cout <<"Bei Division darf man nicht durch 0 teilen!"<<std::endl;
+    return Vec2(0.0f,0.0f);
   }
+  else{
 
-  return Vec2(v.x_ / s, v.y_ / s);
+    return Vec2(v.x_ / s, v.y_ / s);
+  }
 }
 
 Vec2 operator *( float s , Vec2 const& v )
