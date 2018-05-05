@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
         REQUIRE(vec1.y_ == 0 );
       }
 
-      SECTION("constructor")
+      SECTION("user_constructor")
       {
         Vec2 vec2{0,0};
         Vec2 vec3{-1,500};
@@ -66,8 +66,10 @@ int main(int argc, char *argv[])
 
       SECTION("/= operator")
       {
-        vec1 /=s; //Division durch null!!
+        vec1 /=s; //Division durch null!! 
         REQUIRE( vec1.x_ == Approx(1.5));
         REQUIRE( vec1.y_ == Approx(2.5));
       }
+
+      //free functions test !!
     }
