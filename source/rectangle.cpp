@@ -2,16 +2,20 @@
 #define RECTANGLE_CPP
 
 #include"rectangle.hpp"
-#include <algorithm>
+#include"color.hpp"
+#include<cmath>
+
 
 Rectangle :: Rectangle() :
     min_{0.0f,0.0f},
-    max_{0.0f,0.0f}
+    max_{0.0f,0.0f},
+    color_{0.0f}
     {};
 
-Rectangle :: Rectangle(Vec2 const& u , Vec2 const& v) :
-    min_{min(u.x_,v.x_), min(u.y_,v.y_)},
-    max_{max(u.x_,v.x_), max(u.y_,v.y_)}
+Rectangle :: Rectangle(Vec2 const& min, Vec2 const& max, Color const& color) :
+    min_{min},
+    max_{max},
+    color_{color}
     {};
 
 float Rectangle :: get_breite() const
@@ -29,6 +33,11 @@ Vec2 Rectangle ::  get_min_() const
 Vec2 Rectangle ::  get_max_() const
 {
     return max_;
+}
+
+float Rectangle :: circumference() const
+{
+    return (2*(get_breite()+get_hoehe()));
 }
 
 #endif // RECTANGLE_CPP 
