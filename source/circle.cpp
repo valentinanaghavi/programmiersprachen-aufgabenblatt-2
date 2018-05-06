@@ -34,11 +34,31 @@ Vec2 Circle :: get_mp() const//mit oder ohne &???
 
 }
 
+Color Circle :: get_color() const
+{
+    return color_;
+}
+
 float Circle :: circumference () const
 {
     return (2*M_PI*r);
 }
+
 void Circle :: draw(Window const& w) const
+{
+    Vec2 anfang;
+    Vec2 ende;
+    Color col = get_color();
+    for (int i=0; i<=360 ; i++)
+    {
+        anfang = {(float)cos(i*(2*M_PI/360))*r, (float)sin(i*(2*M_PI/360))*r};
+        ende = {(float)cos((i+1)*(2*M_PI/360))*r, (float)sin((i+1)*(2*M_PI/360))*r};
+
+        w.draw_line(anfang.x_ + mp.x_,anfang.y_ + mp.y_,ende.x_ +mp.x_,ende.y_ +mp.y_,col.r_,col.g_,col.b_);
+    }
+}
+
+void Circle :: draw(Window const& w , Color const& c) const
 {
     Vec2 anfang;
     Vec2 ende;
@@ -47,7 +67,7 @@ void Circle :: draw(Window const& w) const
         anfang = {(float)cos(i*(2*M_PI/360))*r, (float)sin(i*(2*M_PI/360))*r};
         ende = {(float)cos((i+1)*(2*M_PI/360))*r, (float)sin((i+1)*(2*M_PI/360))*r};
 
-        w.draw_line(anfang.x_ + mp.x_,anfang.y_ + mp.y_,ende.x_ +mp.x_,ende.y_ +mp.y_,color_.r_,color_.g_,color_.b_);
+        w.draw_line(anfang.x_ + mp.x_,anfang.y_ + mp.y_,ende.x_ +mp.x_,ende.y_ +mp.y_,c.r_,c.g_,c.b_);
     }
 }
 

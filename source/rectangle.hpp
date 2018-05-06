@@ -14,9 +14,12 @@ class Rectangle
     float get_hoehe() const;
     Vec2 get_min_() const;
     Vec2 get_max_() const;
+    Color get_color() const;
+
 
     float circumference () const;
     void draw(Window const& w) const;
+    void draw(Window const& w , Color const& c) const;
 
     private:
     Vec2 min_;

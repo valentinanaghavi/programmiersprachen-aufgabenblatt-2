@@ -11,14 +11,22 @@
 int main(int argc, char* argv[])
 {
   Window win{std::make_pair(800,800)};
-  Rectangle bob{{300,300},{500,500},{0.0f,0.0f,1.0f}};
-  Circle tomate{200,{200,300},{1.0f,0.0f,0.0f}};
+
+  Rectangle a{{300.0f,300.0f},{500.0f,500.0f},{0.0f,0.0f,1.0f}};
+  Rectangle b{{730.0f,730.0f},{70.0f,70.0f},{0.0f,0.0f,0.0f}};
+  Circle c{300.0f,{400.0f,400.0f},{1.0f,0.0f,0.0f}};
+  Circle d{100.0f,{400.0f,400.0f},{1.0f,0.0f,0.0f}};
+
   while (!win.should_close()) {
     if (win.get_key(GLFW_KEY_ESCAPE) == GLFW_PRESS) {
       win.close();
     }
-    bob.draw(win);
-    tomate.draw(win);
+
+    a.draw(win);
+    b.draw(win, {0.0f,1.0f,0.0f});
+    c.draw(win);
+    d.draw(win, {0.0f,1.0f,0.0f});
+
     bool left_pressed = win.get_mouse_button(GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS;
 
     auto t = win.get_time();
