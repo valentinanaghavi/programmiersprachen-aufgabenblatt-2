@@ -71,5 +71,20 @@ void Circle :: draw(Window const& w , Color const& c) const
     }
 }
 
+bool Circle :: is_inside(Vec2 const& v) const 
+{
+    Vec2 a = v -mp;
+    if(sqrt(pow(a.x_, 2)+pow(a.y_ ,2)) <= r)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+
+}
+
+
 
 #endif 

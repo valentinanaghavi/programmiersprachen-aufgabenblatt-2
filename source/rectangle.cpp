@@ -64,6 +64,17 @@ void Rectangle :: draw(Window const& w , Color const& c) const
     w.draw_line(max_.x_,min_.y_,min_.x_,min_.y_, c.r_, c.g_ , c.b_);
 }
 
+bool Rectangle :: is_inside(Vec2 const& v) const
+{
+    if(v.x_ > min_.x_ && v.x_ < max_.x_ && v.y_ > min_.y_ && v.y_ < max_.y_)
+    {
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
 
 
 #endif // RECTANGLE_CPP 

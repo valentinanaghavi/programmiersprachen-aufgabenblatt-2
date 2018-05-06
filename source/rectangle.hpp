@@ -20,6 +20,7 @@ class Rectangle
     float circumference () const;
     void draw(Window const& w) const;
     void draw(Window const& w , Color const& c) const;
+    bool is_inside(Vec2 const& v) const;
 
     private:
     Vec2 min_;
