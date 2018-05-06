@@ -86,10 +86,10 @@ Mat2 inverse ( Mat2 const & m ) //Inverses berechnen
     else
     {   
         Mat2 multi;
-        float i = 1 / ((m.spalte1.x_ * m.spalte2.y_) - (m.spalte2.x_ * m.spalte1.y_)); 
+        float i = 1 / (m.det()); //((m.spalte1.x_ * m.spalte2.y_) - (m.spalte2.x_ * m.spalte1.y_)
         multi.spalte1.x_ = (i * m.spalte2.y_);
-        multi.spalte1.y_ = (-(i * m.spalte2.x_));
-        multi.spalte2.x_ =(-(i * m.spalte1.y_));
+        multi.spalte1.y_ = (-i * m.spalte1.y_);
+        multi.spalte2.x_ =(-i * m.spalte2.x_);
         multi.spalte2.y_ = (i * m.spalte1.x_) ;
         return multi;
     }
