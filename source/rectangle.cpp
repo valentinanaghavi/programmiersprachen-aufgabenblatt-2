@@ -3,6 +3,8 @@
 
 #include"rectangle.hpp"
 #include"color.hpp"
+#include"window.hpp"
+#include "vec2.hpp"
 #include<cmath>
 
 
@@ -39,5 +41,14 @@ float Rectangle :: circumference() const
 {
     return (2*(get_breite()+get_hoehe()));
 }
+
+void Rectangle :: draw(Window const& w) const
+{
+    w.draw_line(min_.x_, min_.y_,min_.x_,max_.y_, color_.r_, color_.g_ ,color_.b_);
+    w.draw_line(min_.x_,max_.y_,max_.x_,max_.y_, color_.r_, color_.g_ , color_.b_);
+    w.draw_line(max_.x_,max_.y_,max_.x_,min_.y_, color_.r_, color_.g_ , color_.b_);
+    w.draw_line(max_.x_,min_.y_,min_.x_,min_.y_, color_.r_, color_.g_ , color_.b_);
+}
+
 
 #endif // RECTANGLE_CPP 

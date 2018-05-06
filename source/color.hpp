@@ -2,6 +2,7 @@
 #define COLOR_HPP
 
 #include <iostream>
+#include"window.hpp"
 
 struct Color
 {
