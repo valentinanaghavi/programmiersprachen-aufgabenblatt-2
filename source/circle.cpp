@@ -1,6 +1,3 @@
-#ifndef CIRCLE_CPP
-#define CIRCLE_CPP
-
 #include"circle.hpp"
 #include"vec2.hpp"
 #include"color.hpp"
@@ -85,6 +82,3 @@ bool Circle :: is_inside(Vec2 const& v) const
 
 }
 
-
-
-#endif 

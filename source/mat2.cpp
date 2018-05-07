@@ -1,6 +1,3 @@
-#ifndef MAT2_CPP
-#define MAT2_CPP
-
 #include "mat2.hpp"
 #include "vec2.hpp"
 #include <math.h>
@@ -116,4 +113,4 @@ Mat2 make_rotation_mat2 ( float phi ) // Rotationsmatrix mit Winkel in Bm
 
 }
 
- #endif // MAT2_CPP 
+ 

@@ -1,6 +1,3 @@
-#ifndef VEC2_CPP
-#define VEC2_CPP
-
 #include "vec2.hpp"
 #include <iostream>
 
@@ -91,6 +88,4 @@ Vec2 operator *( float s , Vec2 const& v )
 {
     return Vec2(s*v.x_, s* v.y_);
 }
-
-
- #endif // VEC2_CPP 
+ 

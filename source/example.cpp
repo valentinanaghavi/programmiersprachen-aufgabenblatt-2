@@ -25,17 +25,14 @@ int main(int argc, char* argv[])
     if (win.get_key(GLFW_KEY_ESCAPE) == GLFW_PRESS) {
       win.close();
     }
-
+    //Rechteck und Kreis
     a.draw(win);
     b.draw(win, {0.0f,1.0f,0.0f});
     c.draw(win);
     d.draw(win, {0.0f,1.0f,0.0f});
 
-   // float t_ = win.get_time();
-   // win.draw_line(400.0f, 400.0f,400.0f, (float)sin((2*M_PI/360))*t_  * (-380.0f)+400.0f , 0.0f, 1.0f, 0.0f);
-   // win.draw_line(400.0f, 400.0f,400.0f, (float)sin((2*M_PI/360))*(t_/60)*(-300.0f)+400.0f ,0.0f, 1.0f, 1.0f);
-   // win.draw_line(400.0f, 400.0f, 400.0f, (float)sin((2*M_PI/360))*(t_/3600)*(-250.0f) +400.0f ,1.0f, 1.0f, 0.0f);
-
+   
+    //Uhr
     float time = win.get_time();
     float sec  = time;
     float min = time/60;

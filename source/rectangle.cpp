@@ -1,6 +1,3 @@
-#ifndef RECTANGLE_CPP
-#define RECTANGLE_CPP
-
 #include"rectangle.hpp"
 #include"color.hpp"
 #include"window.hpp"
@@ -68,6 +65,3 @@ bool Rectangle :: is_inside(Vec2 const& v) const
     }
 }
 
-
-
-#endif // RECTANGLE_CPP 
