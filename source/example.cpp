@@ -4,6 +4,7 @@
 #include <cmath>
 #include "rectangle.hpp"
 #include "vec2.hpp"
+#include "mat2.hpp"
 #include "color.hpp"
 #include "circle.hpp"
 
@@ -17,6 +18,9 @@ int main(int argc, char* argv[])
   Circle c{300.0f,{400.0f,400.0f},{1.0f,0.0f,0.0f}};
   Circle d{100.0f,{400.0f,400.0f},{1.0f,0.0f,0.0f}};
 
+  //std::vector<Circle> circle_;
+  //std::vector<Rectangle> rectangle_;
+
   while (!win.should_close()) {
     if (win.get_key(GLFW_KEY_ESCAPE) == GLFW_PRESS) {
       win.close();
@@ -26,6 +30,24 @@ int main(int argc, char* argv[])
     b.draw(win, {0.0f,1.0f,0.0f});
     c.draw(win);
     d.draw(win, {0.0f,1.0f,0.0f});
+
+   // float t_ = win.get_time();
+   // win.draw_line(400.0f, 400.0f,400.0f, (float)sin((2*M_PI/360))*t_  * (-380.0f)+400.0f , 0.0f, 1.0f, 0.0f);
+   // win.draw_line(400.0f, 400.0f,400.0f, (float)sin((2*M_PI/360))*(t_/60)*(-300.0f)+400.0f ,0.0f, 1.0f, 1.0f);
+   // win.draw_line(400.0f, 400.0f, 400.0f, (float)sin((2*M_PI/360))*(t_/3600)*(-250.0f) +400.0f ,1.0f, 1.0f, 0.0f);
+
+    float time = win.get_time();
+    float sec  = time;
+    float min = time/60;
+    float hour = time/3600;
+    float winkel = - M_PI* 2/60;
+
+
+	  win.draw_line(400.0f, 400.0f , -sin(winkel * sec) * (300.0f)  + 400.0f, -cos(winkel * sec) * (300.0f)  + 400.0f, 1.0f, 1.0f, 1.0f); 
+	  win.draw_line(400.0f, 400.0f , -sin(winkel * min) * (200.0f)  + 400.0f, -cos(winkel * min) * (200.0f)  + 400.0f, 1.0f, 1.0f, 1.0f); 
+	  win.draw_line(400.0f, 400.0f , -sin(winkel * hour) * (100.0f)  + 400.0f, -cos(winkel * hour) * (100.0f)  + 400.0f, 0.0f, 0.0f, 0.0f); 
+
+
 
     bool left_pressed = win.get_mouse_button(GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS;
 
