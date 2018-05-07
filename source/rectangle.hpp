@@ -10,8 +10,6 @@ class Rectangle
     Rectangle();
     Rectangle(Vec2 const& min , Vec2 const& max, Color const& color);
 
-    float get_breite() const;
-    float get_hoehe() const;
     Vec2 get_min_() const;
     Vec2 get_max_() const;
     Color get_color() const;

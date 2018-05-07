@@ -2,6 +2,9 @@
 #include "catch.hpp"
 #include "vec2.hpp"
 #include "mat2.hpp"
+#include"rectangle.hpp"
+#include"circle.hpp"
+#include"color.hpp"
 
 int main(int argc, char *argv[])
 {
@@ -34,6 +37,8 @@ int main(int argc, char *argv[])
         REQUIRE(vec4.y_ == Approx(3.0f));
       }
     }
+
+    //Operator Funktionen Vektoren
 
     TEST_CASE("operator_function", "[Vec2]")
     {
@@ -77,7 +82,7 @@ int main(int argc, char *argv[])
 
     }
 
-      //free functions
+      //free functions Vektoren
      TEST_CASE("operator_free_function", "[Vec2]")
      {
         Vec2 vec1{3.0f,5.0f};
@@ -187,7 +192,7 @@ int main(int argc, char *argv[])
         }
     }
 
-          //free functions
+          //free functions Matrix
      TEST_CASE("operator_free_function_m", "[Mat2]")
      {
         Vec2 vec1{1.0f,3.0f};
@@ -262,4 +267,107 @@ int main(int argc, char *argv[])
           REQUIRE(mat12.spalte2.y_ == Approx(0.0f));
         } 
 
-     }
+      }
+
+      
+TEST_CASE("Rectangle", "[Rectangle]")
+      {
+        Rectangle rec1;
+        Color c = rec1.get_color();
+        Rectangle rec2{{300.0f,300.0f},{500.0f,500.0f},{0.0f,0.0f,1.0f}};
+        Color d = rec2.get_color();
+
+        SECTION("default_constructor_R")
+        {
+
+
+          REQUIRE(rec1.get_min_().x_ == Approx(0.0f));
+          REQUIRE(rec1.get_min_().y_ == Approx(0.0f));
+          REQUIRE(rec1.get_max_().x_ == Approx(0.0f));
+          REQUIRE(rec1.get_max_().y_ == Approx(0.0f));
+          REQUIRE(c.r_ == Approx(0.0f));
+          REQUIRE(c.g_ == Approx(0.0f));
+          REQUIRE(c.b_ == Approx(0.0f));
+
+        }
+
+        SECTION("user_constructor_R")
+        {
+
+          REQUIRE(rec2.get_min_().x_ == Approx(300.0f));
+          REQUIRE(rec2.get_min_().y_ == Approx(300.0f));
+          REQUIRE(rec2.get_max_().x_ == Approx(500.0f));
+          REQUIRE(rec2.get_max_().y_ == Approx(500.0f));
+          REQUIRE(d.r_ == Approx(0.0f));
+          REQUIRE(d.g_ == Approx(0.0f));
+          REQUIRE(d.b_ == Approx(1.0f));
+
+        }
+
+        SECTION("circumference_R")
+        {
+          REQUIRE(rec1.circumference() == Approx(0.0f));
+          REQUIRE(rec2.circumference() == Approx(800.0f));
+        }
+
+        SECTION("is_inside_R")
+        {
+          Vec2 vec1{400.0f,400.0f};
+          Vec2 vec2{3000.0f,4000.0f};
+
+          REQUIRE(rec2.is_inside(vec1) == true);
+          REQUIRE(rec2.is_inside(vec2) == false);
+
+        }
+
+
+      }
+
+      TEST_CASE("Circle", "[Circle]")
+      {
+        Circle cir1;
+        Color c = cir1.get_color();
+        Circle cir2{100.0f,{400.0f,400.0f},{1.0f,0.0f,0.0f}};
+        Color d = cir2.get_color();
+
+        SECTION("default_constructor_C")
+        {
+          REQUIRE(cir1.get_r() == Approx(0.0f));
+          REQUIRE(cir1.get_mp().y_ == Approx(0.0f));
+          REQUIRE(cir1.get_mp().x_ == Approx(0.0f));
+          REQUIRE(c.r_ == Approx(0.0f));
+          REQUIRE(c.g_ == Approx(0.0f));
+          REQUIRE(c.b_ == Approx(0.0f));
+
+        }
+
+        SECTION("user_constructor_C")
+        {
+
+          REQUIRE(cir2.get_r() == Approx(100.0f));
+          REQUIRE(cir2.get_mp().y_ == Approx(400.0f));
+          REQUIRE(cir2.get_mp().x_ == Approx(400.0f));
+          REQUIRE(d.r_ == Approx(1.0f));
+          REQUIRE(d.g_ == Approx(0.0f));
+          REQUIRE(d.b_ == Approx(0.0f));
+
+        }
+
+        SECTION("circumference_C")
+        {
+          REQUIRE(cir1.circumference() == Approx(0.0f));
+          REQUIRE(cir2.circumference() == Approx(628.31853f));
+        }
+
+        SECTION("is_inside_C")
+        {
+          Vec2 vec1{400.0f,400.0f};
+          Vec2 vec2{3000.0f,4000.0f};
+
+          REQUIRE(cir2.is_inside(vec1) == true);
+          REQUIRE(cir2.is_inside(vec2) == false);
+
+        }
+
+
+      }

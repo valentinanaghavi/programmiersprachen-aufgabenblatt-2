@@ -20,14 +20,7 @@ Rectangle :: Rectangle(Vec2 const& min, Vec2 const& max, Color const& color) :
     color_{color}
     {};
 
-float Rectangle :: get_breite() const
-{
-    return (max_.x_ - min_.x_);
-}
-float Rectangle ::  get_hoehe() const
-{
-    return(max_.y_ - min_.y_);
-}
+
 Vec2 Rectangle ::  get_min_() const
 {
     return min_;
@@ -44,7 +37,7 @@ Color Rectangle :: get_color() const
 
 float Rectangle :: circumference() const
 {
-    return (2*(get_breite()+get_hoehe()));
+    return 2 * ((max_.x_ - min_.x_) + (max_.y_ - min_.y_)); //2*(breite+hoehe)
 }
 
 void Rectangle :: draw(Window const& w) const
